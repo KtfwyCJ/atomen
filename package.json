@@ -1,0 +1,37 @@
+{
+  "name": "atomen",
+  "version": "0.0.4",
+  "description": "frame",
+  "main": "./bin/atomen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hello": "node src/index.js",
+    "build": "pnpm -r --filter ./packages run build",
+    "dev": "pnpm -r --filter ./packages --parallel run dev"
+  },
+  "bin": {
+    "atomen": "./bin/atomen.js"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KtfwyCJ/atomen.git"
+  },
+  "author": "chengj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KtfwyCJ/atomen/issues"
+  },
+  "homepage": "https://github.com/KtfwyCJ/atomen#readme",
+  "dependencies": {
+    "@babel/standalone": "^7.19.5",
+    "babel-standalone": "^6.26.0",
+    "commander": "^9.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.11",
+    "typescript": "^4.8.4"
+  }
+}
