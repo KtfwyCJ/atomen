@@ -2,12 +2,14 @@ import express from "express";
 import { serve, build } from "esbuild";
 import type { ServeOnRequestArgs } from "esbuild";
 import path from "path";
+import portfinder from "portfinder";
 import {
   DEFAULT_OUTDIR,
   DEFAULT_HOST,
   DEFAULT_BUILD_PORT,
   DEFAULT_PLATFORM,
   DEFAULT_ENTRY_POINT,
+  DEFAULT_PORT,
 } from "./constants";
 
 export const dev = async () => {
@@ -31,7 +33,10 @@ export const dev = async () => {
     </body>
     </html>`);
   });
-  app.listen(8888, async () => {
+  const port = portfinder.getPortPromise({
+    port: DEFAULT_PORT,
+  });
+  app.listen(port, async () => {
     console.log(
       `App listening at http://${DEFAULT_HOST}:${DEFAULT_BUILD_PORT}`
     );
@@ -51,7 +56,7 @@ export const dev = async () => {
         },
         // 相当于执行: esbuild src/** --bundle --outdir=lib，即将一句命令拆分出来
         {
-          format: "life",
+          format: "iife",
           logLevel: "error",
           outdir: DEFAULT_OUTDIR,
           platform: DEFAULT_PLATFORM,
